@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import axios from 'axios'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -12,7 +13,7 @@ import Slider from '@/components/slider'
 import Servises from '@/components/servises'
 import Product from '@/components/product'
 
-const index = () => {
+const index = ({data}) => {
     const dispatch = useDispatch()
     const { product } = useSelector((state: any) => state.product)
 
@@ -26,9 +27,25 @@ const index = () => {
             <Story />
             <Slider />
             <Servises />
-            <Product data={product} sdfd={'sdfdsf'} test={"dfdf"} />
+            <Product data={data} sdfd={'sdfdsf'} test={"dfdf"} />
         </>
     )
 }
+
+export async function getStaticProps() {
+    const data = await axios.get(`${process.env.NEXT_PUBLIC_URL}/api/product`)
+      .then((res) => res.data)
+      .catch((err) => {
+        console.log('error:', err);
+        return err;
+      });
+    if (data?.response?.status === 404) {
+      return {
+        notFound: true,
+      };
+    }
+    return { props: { data, loading: false }, revalidate: 60 };
+  }
+
 
 export default index

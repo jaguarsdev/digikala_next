@@ -25,7 +25,7 @@ export default function handler(
                 pic: 'https://dkstatics-public.digikala.com/digikala-products/0453261f5778b624dae7dda88a414fe8fcf8d109_1671472045.jpg?x-oss-process=image/resize,m_lfit,h_300,w_300/format,webp/quality,q_80',
                 rating: '4.5',
             },
-            {
+            { 
                 id: '3',
                 title: 'لپتاپ 14.2 اینچی اپل مدل MacBook MKGP3 M1 Pro 2021',
                 price: '100900000',
