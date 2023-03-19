@@ -1,21 +1,30 @@
 import Image from 'next/image'
 import { useSelector, useDispatch } from 'react-redux'
 import recyclebin from '../layout/assets/icons/recycle-bin.png'
-import { RemoveCart } from '@/redux/cartStore'
+import {
+    decrementQuantity,
+    incrementQuantity,
+    removeItem,
+} from '@/redux/cartStore'
 
 function Cart() {
     const dispatch = useDispatch()
-    const { carts } = useSelector((state: any) => state.cart)
+    const { cart } = useSelector((state: any) => state.cart)
 
     const { product } = useSelector((state: any) => state.product)
 
+    const cartsId = cart.map(item => item.id)
+
     const selectedProduct = product?.products?.filter(item =>
-        carts.includes(item.id),
+        cartsId.includes(item.id),
     )
+    // console.log(cart)
 
     const sum = () => {
-        return selectedProduct?.map(item => parseInt(item.price))
+        // return selectedProduct?.map(item => parseInt(item.price))
     }
+    console.log(selectedProduct)
+    console.log(sum())
 
     return (
         <div
@@ -47,37 +56,59 @@ function Cart() {
                                     <div className='font-bold'>
                                         {parseInt(item.price).toLocaleString()}
                                     </div>
-                                    {/* <div className='flex items-center justify-between'>
-                                        <button
-                                            className=''
-                                            onClick={() =>
-                                                dispatch(RemoveCart(item.id))
-                                            }
-                                        >
-                                            <Image
-                                                src={recyclebin}
-                                                className='w-5 cursor-pointer'
-                                                alt=''
-                                            />
-                                        </button>
-                                    </div>  */}
+
                                     <div className='flex border-2 rounded w-24 justify-between p-2 text-red-500 text-xl items-center '>
-                                        <button className='text-2xl'>+</button>
-                                        <div className=' '>1</div>
+                                        <button
+                                            className='text-2xl'
+                                            onClick={() => {
+                                                dispatch(
+                                                    incrementQuantity(item.id),
+                                                )
+                                            }}
+                                        >
+                                            +
+                                        </button>
+                                        <div className=' '>
+                                            {
+                                                cart.find(
+                                                    caitem =>
+                                                        caitem.id === item.id,
+                                                ).quantity
+                                            }
+                                        </div>
                                         <div>
-                                            <button
-                                                onClick={() =>
-                                                    dispatch(
-                                                        RemoveCart(item.id),
-                                                    )
-                                                }
-                                            >
-                                                <Image
-                                                    src={recyclebin}
-                                                    className='w-5 cursor-pointer'
-                                                    alt=''
-                                                />
-                                            </button>
+                                            {cart.find(
+                                                caitem =>
+                                                    caitem.id === item.id &&
+                                                    caitem.quantity === 1,
+                                            ) ? (
+                                                <button
+                                                    onClick={() =>
+                                                        dispatch(
+                                                            removeItem(item.id),
+                                                        )
+                                                    }
+                                                >
+                                                    <Image
+                                                        src={recyclebin}
+                                                        className='w-5 cursor-pointer'
+                                                        alt=''
+                                                    />
+                                                </button>
+                                            ) : (
+                                                <button
+                                                    className='text-2xl'
+                                                    onClick={() => {
+                                                        dispatch(
+                                                            decrementQuantity(
+                                                                item.id,
+                                                            ),
+                                                        )
+                                                    }}
+                                                >
+                                                    -
+                                                </button>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
