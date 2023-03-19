@@ -1,14 +1,14 @@
 const MenuLi = ({ title }: any) => {
     return (
         <>
-            <li className='flex gap-1 items-center text-sm text-gray-700 cursor-pointer hover:border-b-2 hover:border-red-500 p-5'>
+            <li className='w-fit flex gap-1 items-center text-xs text-gray-700 cursor-pointer hover:border-b-2 hover:border-red-500 px-2'>
                 <svg
                     xmlns='http://www.w3.org/2000/svg'
                     fill='none'
                     viewBox='0 0 24 24'
                     strokeWidth={1.5}
                     stroke='currentColor'
-                    className='w-4 h-4'
+                    className='w-[0.85rem] h-[0.85rem]'
                 >
                     <path
                         strokeLinecap='round'

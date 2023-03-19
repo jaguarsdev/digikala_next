@@ -33,7 +33,7 @@ const Header = () => {
 
     return (
         <>
-            <header className='hidden md:grid grid grid-cols-1 border-b border-gray-400'>
+            <header className='relative hidden md:grid grid grid-cols-1 border-b border-gray-400 z-30'>
                 <Image src={baner} alt='' className='w-full h-8 object-cover' />
                 <div className='container grid grid-cols-12 pb-2 pt-3 gap-3'>
                     <Link href={'#'} legacyBehavior>
@@ -62,7 +62,7 @@ const Header = () => {
                             <input
                                 type='text'
                                 // value={value}
-                                className='group bg-gray-200 w-2/4 p-1 pr-7 h-10 rounded-md'
+                                className='group bg-gray-100 w-1/3 pl-1 pr-7 h-9 rounded-lg'
                                 placeholder='جستجو'
                                 onChange={() =>
                                     dispatch(
@@ -74,14 +74,14 @@ const Header = () => {
                         </div>
                     </div>
                     <div className='col-span-1 grid grid-cols-2 justify-end'>
-                        <a className='flex justify-center col-span-1 border-l'>
+                        <a className='flex justify-center items-center col-span-1 border-l'>
                             <svg
                                 xmlns='http://www.w3.org/2000/svg'
                                 fill='none'
                                 viewBox='0 0 24 24'
                                 strokeWidth={1.5}
                                 stroke='currentColor'
-                                className='w-6 h-6'
+                                className='w-5 h-5'
                             >
                                 <path
                                     strokeLinecap='round'
@@ -90,14 +90,14 @@ const Header = () => {
                                 />
                             </svg>
                         </a>
-                        <a className='group relative flex justify-center col-span-1'>
+                        <a className='group relative flex justify-center items-center col-span-1'>
                             <svg
                                 xmlns='http://www.w3.org/2000/svg'
                                 fill='none'
                                 viewBox='0 0 24 24'
                                 strokeWidth={1.5}
                                 stroke='currentColor'
-                                className='w-6 h-6'
+                                className='w-5 h-5'
                             >
                                 <path
                                     strokeLinecap='round'
@@ -105,15 +105,15 @@ const Header = () => {
                                     d='M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z'
                                 />
                             </svg>
-                            <span className='absolute bottom-0 right-0 bg-red-500 px-1 text-white rounded-md text-sm border border-white'>
-                                {/* {cart?.length} */}
+                            <span className='absolute bottom-0 right-1 bg-red-500 px-1 text-white rounded-md text-sm border border-white'>
+                                {cart?.length}
                             </span>
                             <Cart />
                         </a>
                     </div>
                 </div>
                 <div className='relative container flex justify-between items-center'>
-                    <ul className=' flex gap-3'>
+                    <ul className=' flex gap-1'>
                         <li className='group flex gap-1 items-center text-sm text-gray-700 cursor-pointer hover:border-b-2 hover:border-red-500 p-5'>
                             <svg
                                 xmlns='http://www.w3.org/2000/svg'
@@ -130,14 +130,15 @@ const Header = () => {
                                 />
                             </svg>
                             <span>کالای دیجیتال</span>
-                            <div className='hidden group-hover:grid grid-cols-10 w-full h-80 z-20 absolute top-14 right-0'>
-                                <div className='col-span-2 bg-gray-100 h-full border-l border-gray-400'>
-                                    <ul className='flex flex-col gap-3'>
+                            <div className='hidden group-hover:grid absolute top-14 -right-28 w-screen h-screen bg-black/70 z-20'></div>
+                            <div className='hidden group-hover:grid bg-white shadow-md grid-cols-10 w-full h-80 z-40 absolute top-14 right-0 rounded-b-lg p-3'>
+                                <div className='col-span-1 h-full border-l border-gray-400'>
+                                    <ul className='flex flex-col'>
                                         <li
                                             onMouseEnter={() => {
                                                 setMegaMenu(1)
                                             }}
-                                            className='flex gap-1 items-center text-sm text-gray-700 cursor-pointer hover:border-b-2 hover:border-red-500 p-5'
+                                            className='flex gap-1 items-center text-sm text-gray-700 cursor-pointer hover:bg-gray-100 hover:text-red-400 p-3'
                                         >
                                             <svg
                                                 xmlns='http://www.w3.org/2000/svg'
@@ -159,7 +160,7 @@ const Header = () => {
                                             onMouseEnter={() => {
                                                 setMegaMenu(2)
                                             }}
-                                            className='flex gap-1 items-center text-sm text-gray-700 cursor-pointer hover:border-b-2 hover:border-red-500 p-5'
+                                            className='flex gap-1 items-center text-sm text-gray-700 cursor-pointer hover:bg-gray-100 hover:text-red-400 p-3'
                                         >
                                             <svg
                                                 xmlns='http://www.w3.org/2000/svg'
@@ -181,7 +182,7 @@ const Header = () => {
                                             onMouseEnter={() => {
                                                 setMegaMenu(3)
                                             }}
-                                            className='flex gap-1 items-center text-sm text-gray-700 cursor-pointer hover:border-b-2 hover:border-red-500 p-5'
+                                            className='flex gap-1 items-center text-sm text-gray-700 cursor-pointer hover:bg-gray-100 hover:text-red-400 p-3'
                                         >
                                             <svg
                                                 xmlns='http://www.w3.org/2000/svg'
@@ -201,7 +202,7 @@ const Header = () => {
                                         </li>
                                     </ul>
                                 </div>
-                                <div className='col-span-8 grid grid-cols-4 bg-gray-100 h-full '>
+                                <div className='col-span-8 grid grid-cols-4 h-full '>
                                     {megaMenu === 3 ? (
                                         <FakeMenu data={FakeDataAbzar} />
                                     ) : megaMenu === 2 ? (
@@ -222,14 +223,14 @@ const Header = () => {
                         <MenuLi title={'سوالی دارید؟'} />
                         <MenuLi title={'در دیجی کالا بفروشید!'} />
                     </ul>
-                    <p className='flex'>
+                    <p className='flex text-sm gap-1'>
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
                             fill='none'
                             viewBox='0 0 24 24'
                             strokeWidth={1.5}
                             stroke='currentColor'
-                            className='w-5 h-5'
+                            className='w-4 h-4'
                         >
                             <path
                                 strokeLinecap='round'
@@ -351,7 +352,7 @@ const Header = () => {
                                 />
                             </svg>
                             <span className='absolute -bottom-3 -right-1 bg-red-500 px-1 text-white rounded-md text-sm border border-white'>
-                                {/* {carts?.length} */}
+                                {cart?.length}
                             </span>
                             <Cart />
                         </a>
