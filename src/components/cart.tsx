@@ -6,32 +6,28 @@ import { RemoveCart } from '@/redux/cartStore'
 function Cart() {
     const dispatch = useDispatch()
     const { carts } = useSelector((state: any) => state.cart)
-    
+
     const { product } = useSelector((state: any) => state.product)
-  
 
     const selectedProduct = product?.products?.filter(item =>
         carts.includes(item.id),
     )
 
-
     const sum = () => {
         return selectedProduct?.map(item => parseInt(item.price))
     }
-  
 
     return (
         <div
             className='hidden group-hover:flex flex-col py-4 px-3 absolute  z-10 bg-white rounded-lg shadow-md border-[1px] border-slate-300
-        shadow-slate-600 w-[25rem] h-[28rem] top-[2rem] left-0 md:left-[1.7rem] md:left-[1rem] overflow-hidden'
+        shadow-slate-600 w-[25rem] h-[32rem] top-[2rem] left-0 md:left-[1.7rem] md:left-[1rem] overflow-hidden'
         >
             <div className='flex justify-center font-bold w-full items-center mb-4 px-3'>
                 <p className='text-center'>
                     {selectedProduct?.length} کالا در سبد خرید شما موجود است
                 </p>
-               
             </div>
-            <div className='grid overflow-y-scroll'>
+            <div className='grid overflow-y-scroll h-[25rem] '>
                 {selectedProduct?.map(item => {
                     return (
                         <div
@@ -46,12 +42,12 @@ function Cart() {
                                 />
                             </div>
                             <div className='col-span-2 flex flex-col'>
-                                <p className='text-sm '>{item.title}</p>
+                                <p className='text-sm  mt-2'>{item.title}</p>
                                 <div className='grid justify-items-end m-2'>
                                     <div className='font-bold'>
                                         {parseInt(item.price).toLocaleString()}
                                     </div>
-                                    <div className='flex items-center justify-between'>
+                                    {/* <div className='flex items-center justify-between'>
                                         <button
                                             className=''
                                             onClick={() =>
@@ -64,6 +60,25 @@ function Cart() {
                                                 alt=''
                                             />
                                         </button>
+                                    </div>  */}
+                                    <div className='flex border-2 rounded w-24 justify-between p-2 text-red-500 text-xl items-center '>
+                                        <button className='text-2xl'>+</button>
+                                        <div className=' '>1</div>
+                                        <div>
+                                            <button
+                                                onClick={() =>
+                                                    dispatch(
+                                                        RemoveCart(item.id),
+                                                    )
+                                                }
+                                            >
+                                                <Image
+                                                    src={recyclebin}
+                                                    className='w-5 cursor-pointer'
+                                                    alt=''
+                                                />
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

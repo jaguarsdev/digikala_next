@@ -16,7 +16,7 @@ function Product({ data }) {
                           const titlelower = item.title.toLowerCase()
                           return titlelower.indexOf(searchvaluelower) > -1
                       })
-                      
+
                       .map((item: any) => {
                           return (
                               <div

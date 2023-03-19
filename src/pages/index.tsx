@@ -13,9 +13,8 @@ import Slider from '@/components/slider'
 import Servises from '@/components/servises'
 import Product from '@/components/product'
 
-const index = ({data}) => {
+const index = ({ data }) => {
     const dispatch = useDispatch()
-    const { product } = useSelector((state: any) => state.product)
 
     useEffect(() => {
         dispatch(GetProduct())
@@ -27,25 +26,27 @@ const index = ({data}) => {
             <Story />
             <Slider />
             <Servises />
-            <Product data={data} sdfd={'sdfdsf'} test={"dfdf"} />
+            <Product data={data} />
         </>
     )
 }
 
-export async function getStaticProps() {
-    const data = await axios.get(`${process.env.NEXT_PUBLIC_URL}/api/product`)
-      .then((res) => res.data)
-      .catch((err) => {
-        console.log('error:', err);
-        return err;
-      });
+export async function getStaticProps(){
+    const data = await axios
+        .get(`${process.env.NEXT_PUBLIC_URL}/api/product`)
+        .then(res => res.data)
+        .catch(err => {
+            console.log('error:', err)
+            return err
+        })
+        
     if (data?.response?.status === 404) {
-      return {
-        notFound: true,
-      };
+        return {
+            notFound: true,
+        }
     }
-    return { props: { data, loading: false }, revalidate: 60 };
-  }
 
+    return { props: { data, loading: false }, revalidate: 60 }
+}
 
 export default index

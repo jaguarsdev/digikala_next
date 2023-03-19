@@ -1,4 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
@@ -49,7 +48,7 @@ export default function handler(
             {
                 id: '6',
                 title: 'لپتاپ 13.3 اینچی اپل مدل MacBook Pro MNEH3 2022',
-                price: '78,920,000',
+                price: '78920000',
                 pic: 'https://dkstatics-public.digikala.com/digikala-products/e08f7d8700a3183616dd6708d8e1042ba280889b_1671471980.jpg?x-oss-process=image/resize,m_lfit,h_300,w_300/format,webp/quality,q_80',
                 rating: '5',
             },

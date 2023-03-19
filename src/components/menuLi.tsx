@@ -1,7 +1,8 @@
 
 const MenuLi = ({title}:any) => {
     return (
-        <li className="flex gap-1 items-center text-sm text-gray-700">
+        
+        <li className="flex gap-1 items-center text-sm text-gray-700 cursor-pointer hover:border-b-2 hover:border-red-500 p-5">
             <svg
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
