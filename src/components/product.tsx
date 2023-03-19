@@ -51,7 +51,7 @@ function Product({ data }) {
                                               className=' w-7 h-7 rounded-full font-bold
                        text-green-700 hover:bg-green-500 hover:text-white text-center text-lg '
                                               onClick={() =>
-                                                  dispatch(addToCart(item.id))
+                                                  dispatch(addToCart([item.id, item.price]))
                                               }
                                           >
                                               +
@@ -95,7 +95,7 @@ function Product({ data }) {
                                           className=' w-7 h-7 rounded-full font-bold
                        text-green-700 hover:bg-green-500 hover:text-white text-center text-lg '
                                           onClick={() =>
-                                              dispatch(addToCart(item.id))
+                                              dispatch(addToCart([item.id, item.price]))
                                           }
                                       >
                                           +

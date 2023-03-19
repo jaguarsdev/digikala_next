@@ -9,7 +9,7 @@ import {
 
 function Cart() {
     const dispatch = useDispatch()
-    const { cart } = useSelector((state: any) => state.cart)
+    const { cart, total } = useSelector((state: any) => state.cart)
 
     const { product } = useSelector((state: any) => state.product)
 
@@ -62,7 +62,10 @@ function Cart() {
                                             className='text-2xl'
                                             onClick={() => {
                                                 dispatch(
-                                                    incrementQuantity(item.id),
+                                                    incrementQuantity([
+                                                        item.id,
+                                                        item.price,
+                                                    ]),
                                                 )
                                             }}
                                         >
@@ -85,7 +88,10 @@ function Cart() {
                                                 <button
                                                     onClick={() =>
                                                         dispatch(
-                                                            removeItem(item.id),
+                                                            removeItem([
+                                                                item.id,
+                                                                item.price,
+                                                            ]),
                                                         )
                                                     }
                                                 >
@@ -100,9 +106,10 @@ function Cart() {
                                                     className='text-2xl'
                                                     onClick={() => {
                                                         dispatch(
-                                                            decrementQuantity(
+                                                            decrementQuantity([
                                                                 item.id,
-                                                            ),
+                                                                item.price,
+                                                            ]),
                                                         )
                                                     }}
                                                 >
@@ -121,9 +128,7 @@ function Cart() {
                 <div>
                     <p>
                         مبلغ قابل پرداخت:{' '}
-                        {sum()
-                            ?.reduce((partialSum, a) => partialSum + a, 0)
-                            .toLocaleString()}
+                        {total}
                     </p>
                 </div>
                 <div>
